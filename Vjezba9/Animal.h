@@ -1,24 +1,29 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
+#include <iostream>
 #include <string>
 #include <stdexcept>
+
 using namespace std;
 
 class Animal {
 protected:
-	string name;
-	int age;
-	double weight;
-	Animal(string& name, int age, double weight);
+    string name;
+    int age;
+    double weight;
+
+    Animal(const string& name, int age, double weight);
 public:
-	virtual ~Animal() = defualt;
+    virtual ~Animal() = default;
 
-	virtual string getSpecies()const = 0;
-	virtual double getDailyFood()const = 0;
-	string getName()const = 0;
+    virtual string getSpecies() const = 0;
+    virtual double getDailyFood() const = 0;
+    virtual string getName() const { return name; }
 
-	Animal(const Animal&) = delete;
-	Animal& operator = (const Animal&) = delete;
+    // Sprijeèi kopiranje
+    Animal(const Animal&) = delete;
+    Animal& operator=(const Animal&) = delete;
 };
-#endif // !ANIMAL_H
+
+#endif
